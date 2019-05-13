@@ -110,7 +110,8 @@ private returnStyleValues() {
   @HostListener('click')
   public print(): void {
     let printContents, popupWin, styles, links;
-
+    let basehref = window.location.origin;
+    
     if(this.useExistingCss) {
       styles = this.getElementTag('style');
       links = this.getElementTag('link');
@@ -123,6 +124,7 @@ private returnStyleValues() {
       <html>
         <head>
           <title>${this.printTitle ? this.printTitle : ""}</title>
+          <base href="${basehref}">
           ${this.returnStyleSheetLinkTags()}
           ${styles}
           ${links}
